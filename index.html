@@ -153,14 +153,26 @@ loading="lazy"></iframe>
 
 <!-- 💌 LETTER -->
 <section class="reveal">
-<div class="love-letter">
-<p>
-To my person 🦢<br><br>
-From October 2024, everything changed. You became my calm, my chaos, my home.
-Every smile of yours rewrote my universe and every touch felt like destiny.
-You are my safe place, my forever, my always 💫<br><br>
-I choose you—today, tomorrow, and every lifetime after ✨
-</p>
+<div class="love-letter typewriter" id="loveText">
+  <span>From October 2024, life quietly changed its rhythm… 💫</span><br><br>
+
+  <span>Somewhere between ordinary days and endless nights, you walked in —</span><br>
+  <span>and suddenly, everything made sense.</span><br>
+  <span>You became my calm in chaos, my warmth in silence,</span><br>
+  <span>the soft thought that stays even when the world sleeps 🌙✨</span><br><br>
+
+  <span>Every moment with you feels like time slowing down,</span><br>
+  <span>like the universe pausing just to let me breathe you in.</span><br>
+  <span>Your smile feels like home,</span><br>
+  <span>your presence feels like destiny,</span><br>
+  <span>and your love feels like something I was waiting for —</span><br>
+  <span>even before I knew how to name it 🦢💖</span><br><br>
+
+  <span>From that October till this very second,</span><br>
+  <span>every heartbeat has been counting <strong>us</strong>.</span><br>
+  <span>And if time ever asks me what forever looks like,</span><br>
+  <span>I’ll answer without hesitation — <strong>you</strong>.</span><br>
+  <span>Always you. Today, tomorrow, and every lifetime after 💌✨</span>
 </div>
 </section>
 
@@ -192,6 +204,11 @@ function openModal(src){
 modal.style.display="flex";
 modalImg.src=src;
 }
+  // Typewriter reveal timing
+const lines = document.querySelectorAll('#loveText span');
+lines.forEach((line, i) => {
+  line.style.animationDelay = `${i * 0.35}s`;
+});
 </script>
 
 </body>
