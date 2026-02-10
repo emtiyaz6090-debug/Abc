@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Our Forever | A Cinematic Love Story</title>
+
+<style>
+:root{
+--apple-bg:#000;
+--apple-glass:rgba(255,255,255,.1);
+--apple-text:#fff;
+--apple-secondary:rgba(255,255,255,.6);
+--accent-pink:#ff375f;
+--sf-font:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text","Helvetica Neue",sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-font-smoothing:antialiased;}
+body{background:var(--apple-bg);color:var(--apple-text);font-family:var(--sf-font);overflow-x:hidden;scroll-behavior:smooth;}
+
+@keyframes fadeInUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+@keyframes heartbeat{0%{transform:scale(1)}14%{transform:scale(1.1)}28%{transform:scale(1)}42%{transform:scale(1.1)}70%{transform:scale(1)}}
+@keyframes float{0%{transform:translateY(0)}50%{transform:translateY(-10px)}100%{transform:translateY(0)}}
+
+.reveal{opacity:0;transform:translateY(30px);transition:1s cubic-bezier(.2,.8,.2,1);}
+.reveal.active{opacity:1;transform:none}
+
+/* HERO */
+.hero{
+height:100vh;
+display:flex;
+align-items:center;
+justify-content:center;
+text-align:center;
+background:
+linear-gradient(rgba(0,0,0,.55),rgba(0,0,0,.55)),
+url('swan.jpg');
+background-size:cover;
+background-position:center;
+}
+.hero h1{font-size:3.5rem;font-weight:700;margin-bottom:10px}
+.hero p{color:var(--apple-secondary);margin-bottom:30px}
+.cta-btn{
+background:#fff;color:#000;padding:14px 28px;border-radius:30px;
+text-decoration:none;font-weight:600
+}
+.scroll-indicator{
+position:absolute;bottom:30px;width:100%;text-align:center;
+color:var(--apple-secondary);animation:float 2s infinite
+}
+
+section{padding:100px 20px;max-width:1100px;margin:auto}
+.glass-card{
+background:var(--apple-glass);
+backdrop-filter:blur(20px);
+border-radius:30px;
+padding:40px;
+box-shadow:0 20px 40px rgba(0,0,0,.35)
+}
+
+/* MUSIC */
+.music-section{display:flex;justify-content:center}
+.spotify-container{max-width:500px;width:100%}
+
+/* TIMER */
+.timer-display{display:flex;gap:20px;justify-content:center;flex-wrap:wrap}
+.timer-val{font-size:2.5rem;font-weight:700}
+.timer-label{font-size:.7rem;letter-spacing:2px;color:var(--apple-secondary)}
+
+/* GALLERY */
+.gallery-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+.gallery-item{aspect-ratio:1;border-radius:20px;overflow:hidden;cursor:zoom-in}
+.gallery-item img{width:100%;height:100%;object-fit:cover}
+
+/* LETTER */
+.love-letter{max-width:700px;margin:auto;text-align:center;line-height:1.8;color:var(--apple-secondary)}
+.love-letter span{color:#fff;font-weight:500}
+
+/* FINAL */
+.final-section{height:60vh;display:flex;flex-direction:column;justify-content:center;align-items:center}
+.heartbeat-text{
+font-size:2.5rem;font-weight:800;
+animation:heartbeat 1.5s infinite;
+background:linear-gradient(180deg,#fff,#ff375f);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+}
+
+/* MODAL */
+.modal{
+position:fixed;inset:0;
+background:rgba(0,0,0,.95);
+display:none;align-items:center;justify-content:center;
+z-index:999;cursor:zoom-out
+}
+.modal img{max-width:95%;max-height:90vh;border-radius:16px}
+
+@media(max-width:600px){
+.hero h1{font-size:2.5rem}
+.heartbeat-text{font-size:1.6rem}
+.gallery-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+
+<body>
+
+<header class="hero">
+<div class="hero-content reveal active">
+<h1>Always & Forever 🦢</h1>
+<p>Our souls, written in the stars 💫</p>
+<a href="#music" class="cta-btn">Open Our Story 💌</a>
+</div>
+<div class="scroll-indicator">Scroll down ↓</div>
+</header>
+
+<!-- 🎵 MUSIC -->
+<section id="music" class="music-section reveal">
+<div class="glass-card spotify-container">
+<h2 style="margin-bottom:20px">Our Anthem ✨</h2>
+<iframe
+style="border-radius:12px"
+src="https://open.spotify.com/embed/track/0T5iIrXA4p5GsubkhuBIKV?theme=0"
+width="100%" height="152"
+allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+loading="lazy"></iframe>
+</div>
+</section>
+
+<!-- ⏳ TIMER -->
+<section class="reveal">
+<div class="glass-card" style="text-align:center">
+<h2>Since the moment it began…</h2>
+<div class="timer-display">
+<div><span class="timer-val" id="days">00</span><div class="timer-label">DAYS</div></div>
+<div><span class="timer-val" id="hours">00</span><div class="timer-label">HOURS</div></div>
+<div><span class="timer-val" id="minutes">00</span><div class="timer-label">MINS</div></div>
+<div><span class="timer-val" id="seconds">00</span><div class="timer-label">SECS</div></div>
+</div>
+<p>Every second with you is a gift 💖</p>
+</div>
+</section>
+
+<!-- 📸 GALLERY -->
+<section class="reveal">
+<h2 style="text-align:center;margin-bottom:40px">Captured Memories 📸</h2>
+<div class="gallery-grid">
+<div class="gallery-item" onclick="openModal(this.querySelector('img').src)"><img src="img1.jpg"></div>
+<div class="gallery-item" onclick="openModal(this.querySelector('img').src)"><img src="img2.jpg"></div>
+<div class="gallery-item" onclick="openModal(this.querySelector('img').src)"><img src="img3.jpg"></div>
+<div class="gallery-item" onclick="openModal(this.querySelector('img').src)"><img src="img4.jpg"></div>
+</div>
+</section>
+
+<!-- 💌 LETTER -->
+<section class="reveal">
+<div class="love-letter">
+<p>
+To my person 🦢<br><br>
+From October 2024, everything changed. You became my calm, my chaos, my home.
+Every smile of yours rewrote my universe and every touch felt like destiny.
+You are my safe place, my forever, my always 💫<br><br>
+I choose you—today, tomorrow, and every lifetime after ✨
+</p>
+</div>
+</section>
+
+<!-- ❤️ FINAL -->
+<section class="final-section reveal">
+<div class="heartbeat-text">
+I loveeee youuuuuuu soooooo muchhhhh 💖✨
+</div>
+</section>
+
+<div id="modal" class="modal" onclick="this.style.display='none'">
+<img id="modalImg">
+</div>
+
+<script>
+const observer=new IntersectionObserver(e=>e.forEach(x=>x.isIntersecting&&x.target.classList.add("active")),{threshold:.1});
+document.querySelectorAll(".reveal").forEach(el=>observer.observe(el));
+
+const start=new Date("October 1, 2024").getTime();
+setInterval(()=>{
+const d=Date.now()-start;
+days.innerText=Math.floor(d/864e5);
+hours.innerText=Math.floor(d%864e5/36e5);
+minutes.innerText=Math.floor(d%36e5/6e4);
+seconds.innerText=Math.floor(d%6e4/1e3);
+},1000);
+
+function openModal(src){
+modal.style.display="flex";
+modalImg.src=src;
+}
+</script>
+
+</body>
+</html>
