@@ -99,6 +99,13 @@ z-index:999;cursor:zoom-out
 .heartbeat-text{font-size:1.6rem}
 .gallery-grid{grid-template-columns:1fr}
 }
+// Typewriter fix (DOM ready)
+document.addEventListener("DOMContentLoaded", () => {
+  const lines = document.querySelectorAll("#loveText span");
+  lines.forEach((line, i) => {
+    line.style.animationDelay = `${i * 0.35}s`;
+  });
+});
 </style>
 </head>
 
@@ -150,8 +157,7 @@ loading="lazy"></iframe>
 <div class="gallery-item" onclick="openModal(this.querySelector('img').src)"><img src="img4.jpg"></div>
 </div>
 </section>
-
-<!-- 💌 LETTER -->
+  <!-- 💌 LETTER -->
 <section class="reveal">
 <div class="love-letter typewriter" id="loveText">
   <span>From October 2024, life quietly changed its rhythm… 💫</span><br><br>
